@@ -2,10 +2,7 @@
 
 Knight::Knight(char x, char y, char type, char color):Piece(x,y,type,color)
 {
-	this->_posX = x;
-	this->_posY = y;
-	this->_type = type;
-	this->_color = color;
+	
 }
 
 Knight::~Knight()
