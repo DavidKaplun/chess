@@ -12,5 +12,9 @@ Rook::~Rook()
 
 bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int destination_y)
 {
-	return 1;
+	if (source_x != destination_x and source_y!=destination_y)
+	{
+		return false;
+	}
+
 }
