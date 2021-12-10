@@ -15,8 +15,5 @@ public:
 	Piece(char x,char y,char type,char color);
 	~Piece();
 	virtual void move(char x, char y);
-	virtual void change_pos_moves(std::vector<std::vector<Piece*>> board) = 0;
-
-
 };
 
