@@ -4,6 +4,6 @@
 class Bishop :public Piece
 {
 public:
-	Bishop(char x, char y, char type, char color);
+	Bishop(char type, char color);
 	~Bishop();
 };

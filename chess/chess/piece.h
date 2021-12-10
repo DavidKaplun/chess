@@ -9,7 +9,7 @@ protected:
 	char _type;
 
 public:
-	Piece(char x,char y,char type,char color);
+	Piece(char type,char color);
 	~Piece();
 
 	char getType();

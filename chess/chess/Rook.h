@@ -7,7 +7,7 @@ class Rook : public Piece
 private:
 	bool _isFirstMove;
 public:
-	Rook(char x, char y, char type, char color);
+	Rook(char type, char color);
 	~Rook();
 
 };

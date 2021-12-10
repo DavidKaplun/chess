@@ -7,6 +7,6 @@ private:
 	bool _isFirstMove;
 
 public:
-	Pawn(char x, char y, char type, char color);
+	Pawn(char type, char color);
 	~Pawn();
 };

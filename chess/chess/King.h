@@ -4,6 +4,6 @@
 class King :public Piece
 {
 public:
-	King(char x, char y, char type, char color);
+	King(char type, char color);
 	~King();
 };
