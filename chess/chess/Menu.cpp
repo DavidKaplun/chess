@@ -1,8 +1,11 @@
 #include "Menu.h"
 #include "Rook.h"
+#include "Knight.h"
 
 #define BOARD_WIDTH 8
 #define BOARD_HEIGHT 8
+
+void createBoard(std::vector<std::vector<Piece*>>& board);
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
