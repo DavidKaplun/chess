@@ -6,6 +6,7 @@
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
+	createBoard(this->_board);
 }
 
 void createBoard(std::vector<std::vector<Piece*>>& board)
@@ -24,6 +25,13 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 
 void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 {
-	Rook* rook =new Rook('a','1','r','w');
-	Rook* rook1 = new Rook('h','1')
+	//white rooks
+	board[7][0]=new Rook('a','1','r','w');
+	board[7][7] = new Rook('h', '1', 'r', 'w');
+
+	//black rooks
+	board[0][0] = new Rook('a', '8', 'r', 'b');
+	board[0][7] = new Rook('h', '8', 'r', 'b');
+
+	//white knights
 }
