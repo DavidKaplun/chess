@@ -13,7 +13,6 @@ Piece::~Piece()
 }
 
 
-
 char Piece::getType()
 {
 	return this->_type;

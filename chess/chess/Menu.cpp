@@ -37,11 +37,13 @@ int Menu::updateBoard(std::string move)
 	if (this->_board[source_y][source_x] == nullptr)
 	{
 		std::cout << "You can't move because there is no piece in this square" << std::endl;
+		return -1;
 	}
 	else
 	{
 		this->_board[source_y][source_x]->isMovePossible(source_x,source_y,destination_x,destination_y);
 	}
+	return 1;
 }
 void printBoard(std::vector<std::vector<Piece*>>& board)
 {
