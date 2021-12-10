@@ -11,7 +11,7 @@ protected:
 public:
 	Piece(char type,char color);
 	~Piece();
-	virtual bool isMovePossible(int source_x,int source_y,int destination_x,int destination_y)=0;
+	virtual bool isMovePossible(int source_x,int source_y,int destination_x,int destination_y,std::vector<std::vector<Piece*>> board)=0;
 	char getType();
 	char getColor();
 };

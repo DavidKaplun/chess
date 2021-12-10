@@ -9,6 +9,7 @@ class Menu
 private:
 	std::vector<std::vector<Piece*>> _board;
 	int _numOfMoves;
+	bool isKingInDanger;
 public:
 	Menu();
 	void incNumOfMoves();

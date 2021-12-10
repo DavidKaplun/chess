@@ -47,7 +47,7 @@ void Menu::updateBoard(std::string move)
 	}
 	else
 	{
-		this->_board[source_y][source_x]->isMovePossible(source_x,source_y,destination_x,destination_y);
+		this->_board[source_y][source_x]->isMovePossible(source_x,source_y,destination_x,destination_y,this->_board);
 	}
 }
 void printBoard(std::vector<std::vector<Piece*>>& board)

@@ -10,7 +10,7 @@ King::~King()
 
 }
 
-bool King::isMovePossible(int source_x, int source_y, int destination_x, int destination_y)
+bool King::isMovePossible(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
 	return 1;
 }
