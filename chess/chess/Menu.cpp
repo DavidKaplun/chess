@@ -13,7 +13,7 @@
 #define BOARD_WIDTH 8
 #define BOARD_HEIGHT 8
 
-void addPiecesToBoard(std::vector<std::vector<Piece*>>& board);
+
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
