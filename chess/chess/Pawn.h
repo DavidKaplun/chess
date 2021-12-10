@@ -4,7 +4,7 @@
 class Pawn :public Piece
 {
 private:
-	bool isFirstMove;
+	bool _isFirstMove;
 
 public:
 	Pawn(char x, char y, char type, char color);
