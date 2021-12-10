@@ -24,5 +24,5 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 
 void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 {
-	
+	 //Rook* rook = Rook('a', '1', "rook", 'w');
 }
