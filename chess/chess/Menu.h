@@ -3,6 +3,10 @@
 class Menu
 {
 private:
-	std::vector<Piece*> board;
-	static int numOfMoves;
+	std::vector<std::vector<Piece*>> _board;
+	int _numOfMoves;
+public:
+	Menu();
+	void incNumOfMoves();
+	~Menu();
 };
