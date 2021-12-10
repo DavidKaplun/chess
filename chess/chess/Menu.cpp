@@ -1,6 +1,14 @@
 #include "Menu.h"
+
+//da big guys
+#include "King.h"
+#include "Queen.h"
+//da medium guys
 #include "Rook.h"
+#include "Bishop.h"
 #include "Knight.h"
+//just a small pawn
+#include "Pawn.h"
 
 #define BOARD_WIDTH 8
 #define BOARD_HEIGHT 8
@@ -41,6 +49,6 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	board[7][6] = new Knight('g', '1', 'k', 'w');
 
 	//black knights
-	board[0][1] = new Knight('b', '8', 'k', 'b');//idk what this type thing is for but ok
+	board[0][1] = new Knight('b', '8', 'k', 'b')
 	board[0][6] = new Knight('g', '8', 'k', 'b');
 }
