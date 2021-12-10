@@ -13,5 +13,6 @@ public:
 	Menu();
 	void incNumOfMoves();
 	std::vector<std::vector<Piece*>>& getBoard();
+	int updateBoard(std::string move);
 	~Menu();
 };

@@ -25,6 +25,24 @@ std::vector<std::vector<Piece*>>& Menu::getBoard()
 	return this->_board;
 }
 
+
+int Menu::updateBoard(std::string move)
+{
+	int source_x = move[0] - 97;
+	int source_y = move[1] - 48;
+
+	int destination_x = move[2] - 97;
+	int destination_y = move[3] - 48;
+
+	if (this->_board[source_y][source_x] == nullptr)
+	{
+		std::cout << "You can't move because there is no piece in this square" << std::endl;
+	}
+	else
+	{
+		this->_board[source_y][source_x]->isMovePossible(source_x,source_y,destination_x,destination_y);
+	}
+}
 void printBoard(std::vector<std::vector<Piece*>>& board)
 {
 	int x = 0;
@@ -75,8 +93,8 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	board[7][7] = new Rook('r', 'b');
 
 	//white rooks
-	board[0][0] = new Rook('r', 'w');
-	board[0][7] = new Rook('r', 'w');
+	board[0][0] = new Rook('R', 'w');
+	board[0][7] = new Rook('R', 'w');
 
 
 	//black knights
@@ -84,8 +102,8 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	board[7][6] = new Knight('n', 'b');
 
 	//white knights
-	board[0][1] = new Knight('n', 'w');
-	board[0][6] = new Knight('n', 'w');
+	board[0][1] = new Knight('N', 'w');
+	board[0][6] = new Knight('N', 'w');
 
 
 	//black bishops
@@ -93,20 +111,25 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	board[7][5] = new Bishop('b', 'b');
 
 	//white bishops
-	board[0][2] = new Bishop('b', 'w');
-	board[0][5] = new Bishop('b', 'w');
+	board[0][2] = new Bishop('B', 'w');
+	board[0][5] = new Bishop('B', 'w');
 
 
 	//black queen
 	board[7][3] = new Queen('q', 'b');
 
 	//white queen
-	board[0][3] = new Queen('q', 'w');
+	board[0][3] = new Queen('Q', 'w');
 
 	
 	//black king
 	board[7][4] = new King('k', 'b');
 
 	//white king
-	board[0][4] = new King('k', 'w');
+	board[0][4] = new King('K', 'w');
+}
+
+void Menu::incNumOfMoves()
+{
+	this->_numOfMoves++;
 }

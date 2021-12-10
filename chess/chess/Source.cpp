@@ -1,10 +1,50 @@
 
 #include "Menu.h"
 
+bool check_move(std::string move);
 int main()
 {
 	Menu* menu = new Menu();
 	printBoard(menu->getBoard());
+	std::string move;
+	bool isLegalMove = false;
+	while (isLegalMove == false)
+	{
+		std::cout << "Enter Your move(example:e2e4):" << std::endl;
+		std::cin >> move;
+		isLegalMove = check_move(move);
+	}
+	
+	menu->incNumOfMoves();
+}
+bool check_move(std::string move)
+{
+	if (move.length()!=4)
+	{
+		return false;
+	}
+	if (move[0] < 'a' or move[0]>'h')
+	{
+		return false;
+	}
+	if (move[2] < 'a' or move[2]>'h')
+	{
+		return false;
+	}
+
+	if (move[1] < '1' or move[1]>'8')
+	{
+		return false;
+	}
+	if (move[3] < '1' or move[3]>'8')
+	{
+		return false;
+	}
+	if (move[0] == move[2] and move[1] == move[3])
+	{
+		return false;
+	}
+	return true;
 }
 
 
