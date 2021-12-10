@@ -1,7 +1,7 @@
 #pragma once
 #include "Piece.h"
 #include "King.h"
-void createBoard(std::vector<std::vector<Piece*>>& board);
+
 void addPiecesToBoard();
 void printBoard(std::vector<std::vector<Piece*>>& board);
 
@@ -19,5 +19,6 @@ public:
 	std::vector<std::vector<Piece*>>& getBoard();
 	void updateBoard(std::string move);
 	void addPiecesToBoard();
+	void createBoard();
 	~Menu();
 };

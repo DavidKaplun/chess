@@ -17,7 +17,7 @@
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
-	createBoard(this->_board);
+	createBoard();
 }
 
 std::vector<std::vector<Piece*>>& Menu::getBoard()
@@ -74,7 +74,7 @@ void printBoard(std::vector<std::vector<Piece*>>& board)
 	}
 
 }
-void createBoard(std::vector<std::vector<Piece*>>& board)
+void Menu::createBoard()
 {
 	int x = 0;
 	int y = 0;
@@ -87,7 +87,7 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 			row.push_back(nullptr);
 			//board[y].push_back(nullptr);
 		}
-		board.push_back(row);
+		_board.push_back(row);
 	}
 	addPiecesToBoard();
 	
