@@ -1,6 +1,6 @@
 #include "Rook.h"
 
-Rook::Rook(char y, char x, char type, char color) : Piece(y,x,type,color)
+Rook::Rook(char x, char y, char type, char color) : Piece(x,y,type,color)
 {
 	this->_posX = x;
 	this->_posY = y;
