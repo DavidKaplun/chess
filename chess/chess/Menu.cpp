@@ -36,11 +36,11 @@ void printBoard(std::vector<std::vector<Piece*>>& board)
 		{
 			if (board[y][x] == nullptr)
 			{
-				std::cout << "#";
+				std::cout << "# ";
 			}
 			else
 			{
-				std::cout << board[y][x]->getType();
+				std::cout << board[y][x]->getType()<<" ";
 			}
 		
 		}
