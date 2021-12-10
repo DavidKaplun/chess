@@ -22,7 +22,7 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 	
 }
 
-void addPiecesToBoard(std::vector<std::vector<Piece*>>)
+void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 {
-
+	
 }
