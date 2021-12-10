@@ -20,6 +20,11 @@ Menu::Menu()
 	createBoard(this->_board);
 }
 
+std::vector<std::vector<Piece*>>& Menu::getBoard()
+{
+	return this->_board;
+}
+
 void printBoard(std::vector<std::vector<Piece*>>& board)
 {
 	int x = 0;
@@ -37,6 +42,7 @@ void printBoard(std::vector<std::vector<Piece*>>& board)
 			{
 				std::cout << board[y][x]->getType();
 			}
+		
 		}
 		std::cout << std::endl;
 
@@ -47,12 +53,16 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 {
 	int x = 0;
 	int y = 0;
+	std::vector<Piece*> row;
 	for (y = 0; y < BOARD_HEIGHT; y++)
 	{
+		//board.push_back(new std::vector<Piece*>);
 		for (x = 0; x < BOARD_WIDTH; x++)
 		{
-			board[y][x] = nullptr;
+			row.push_back(nullptr);
+			//board[y].push_back(nullptr);
 		}
+		board.push_back(row);
 	}
 	addPiecesToBoard(board);
 	

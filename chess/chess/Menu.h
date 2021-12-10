@@ -12,6 +12,6 @@ private:
 public:
 	Menu();
 	void incNumOfMoves();
-	
+	std::vector<std::vector<Piece*>>& getBoard();
 	~Menu();
 };

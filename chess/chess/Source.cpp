@@ -1,10 +1,10 @@
-#include "Rook.h"
-#include "Piece.h"
+
 #include "Menu.h"
 
 int main()
 {
-	
+	Menu* menu = new Menu();
+	printBoard(menu->getBoard());
 }
 
 
