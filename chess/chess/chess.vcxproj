@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bishop.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Pawn.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bishop.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Pawn.cpp" />
