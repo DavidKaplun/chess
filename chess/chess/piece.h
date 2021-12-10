@@ -6,7 +6,7 @@ class Piece
 {
 protected:	
 	char _posX; // the letters
-	char _posy; // the values
+	char _posY; // the values
 	std::vector<std::string> _posMoves;
 	char _color;
 	char _type;

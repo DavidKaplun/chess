@@ -16,5 +16,5 @@ Piece::~Piece()
 void Piece::move(char x, char y)
 {
 	this->_posX = x;
-	this->_posy = y;
+	this->_posY = y;
 }
