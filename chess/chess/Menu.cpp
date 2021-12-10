@@ -14,6 +14,7 @@
 #define BOARD_HEIGHT 8
 
 void createBoard(std::vector<std::vector<Piece*>>& board);
+void addPiecesToBoard(std::vector<std::vector<Piece*>>& board);
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
@@ -31,6 +32,7 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 			board[y][x] = nullptr;
 		}
 	}
+	addPiecesToBoard(board);
 	
 }
 
