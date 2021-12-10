@@ -34,4 +34,10 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	board[0][7] = new Rook('h', '8', 'r', 'b');
 
 	//white knights
+	board[7][1] = new Knight('b', '1', 'k', 'w');
+	board[7][6] = new Knight('g', '1', 'k', 'w');
+
+	//black knights
+	board[0][1] = new Knight('b', '8', 'k', 'b');//idk what this type thing is for but ok
+	board[0][6] = new Knight('g', '8', 'k', 'b');
 }
