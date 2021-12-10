@@ -61,4 +61,11 @@ void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
 	//black bishops
 	board[0][2] = new Bishop('c', '8', 'b', 'b');
 	board[0][5] = new Bishop('f', '8', 'b', 'b');
+
+
+	//white queens
+	board[7][3] = new Queen('d', '1', 'q', 'w');
+
+	//black queens
+	board[0][3] = new Queen('d', '8', 'q', 'b');
 }
