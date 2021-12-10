@@ -89,54 +89,57 @@ void createBoard(std::vector<std::vector<Piece*>>& board)
 		}
 		board.push_back(row);
 	}
-	addPiecesToBoard(board);
+	addPiecesToBoard();
 	
 }
 
-void addPiecesToBoard(std::vector<std::vector<Piece*>>& board)
+void Menu::addPiecesToBoard()
 {
+
 	//black rooks
-	board[7][0] = new Rook('r', 'b');
-	board[7][7] = new Rook('r', 'b');
+	_board[7][0] = new Rook('r', 'b');
+	_board[7][7] = new Rook('r', 'b');
 
 	//white rooks
-	board[0][0] = new Rook('R', 'w');
-	board[0][7] = new Rook('R', 'w');
+	_board[0][0] = new Rook('R', 'w');
+	_board[0][7] = new Rook('R', 'w');
 
 
 	//black knights
-	board[7][1] = new Knight('n', 'b');
-	board[7][6] = new Knight('n', 'b');
+	_board[7][1] = new Knight('n', 'b');
+	_board[7][6] = new Knight('n', 'b');
 
 	//white knights
-	board[0][1] = new Knight('N', 'w');
-	board[0][6] = new Knight('N', 'w');
+	_board[0][1] = new Knight('N', 'w');
+	_board[0][6] = new Knight('N', 'w');
 
 
 	//black bishops
-	board[7][2] = new Bishop('b', 'b');
-	board[7][5] = new Bishop('b', 'b');
+	_board[7][2] = new Bishop('b', 'b');
+	_board[7][5] = new Bishop('b', 'b');
 
 	//white bishops
-	board[0][2] = new Bishop('B', 'w');
-	board[0][5] = new Bishop('B', 'w');
+	_board[0][2] = new Bishop('B', 'w');
+	_board[0][5] = new Bishop('B', 'w');
 
 
 	//black queen
-	board[7][3] = new Queen('q', 'b');
+	_board[7][3] = new Queen('q', 'b');
 
 	//white queen
-	board[0][3] = new Queen('Q', 'w');
+	_board[0][3] = new Queen('Q', 'w');
 
 	
 	//black king
-	board[7][4] = new King('k', 'b');
-
+	_board[7][4] = new King('k', 'b');
+	this->_blackKing = _board[7][4];
 	//white king
-	board[0][4] = new King('K', 'w');
+	_board[0][4] = new King('K', 'w');
+	this->_whiteKing = _board[0][4];
 }
 
 void Menu::incNumOfMoves()
 {
 	this->_numOfMoves++;
 }
+
