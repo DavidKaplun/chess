@@ -13,8 +13,14 @@ Piece::~Piece()
 	// no allocated memory
 }
 
-void Piece::move(char x, char y)
+
+
+char Piece::getType()
 {
-	this->_posX = x;
-	this->_posY = y;
+	return this->_type;
+}
+
+char Piece::getColor()
+{
+	return this->_color;
 }

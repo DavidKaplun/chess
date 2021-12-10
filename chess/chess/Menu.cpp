@@ -13,14 +13,35 @@
 #define BOARD_WIDTH 8
 #define BOARD_HEIGHT 8
 
-void createBoard(std::vector<std::vector<Piece*>>& board);
-void addPiecesToBoard(std::vector<std::vector<Piece*>>& board);
+
 Menu::Menu()
 {
 	this->_numOfMoves = 0;
 	createBoard(this->_board);
 }
 
+void printBoard(std::vector<std::vector<Piece*>>& board)
+{
+	int x = 0;
+	int y = 0;
+	
+	for (x = 0; x < BOARD_WIDTH; x++)
+	{
+		for (y = 0; y < BOARD_HEIGHT; y++)
+		{
+			if (board[x][y] == nullptr)
+			{
+				std::cout << "#";
+			}
+			else
+			{
+				std::cout << board[x][y]->_type;
+			}
+			;
+		}
+
+	}
+}
 void createBoard(std::vector<std::vector<Piece*>>& board)
 {
 	int x = 0;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Piece.h"
+
 class Menu
 {
 private:
@@ -8,5 +9,8 @@ private:
 public:
 	Menu();
 	void incNumOfMoves();
+	static void createBoard(std::vector<std::vector<Piece*>>& board);
+	static void addPiecesToBoard(std::vector<std::vector<Piece*>>& board);
+	static void printBoard(std::vector<std::vector<Piece*>>& board);
 	~Menu();
 };
