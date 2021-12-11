@@ -29,7 +29,7 @@ bool King::isMovePossible(int source_x, int source_y, int destination_x, int des
 	int kingsX = destination_x;//it sets the possible positition of the king and checks if in the next position he is under attack
 	int kingsY = destination_y;
 	
-	bool isMovePossible = !(isInDangerAfterMove(-1, -1, -1, -1, kingsX, kingsY, board));
+	bool isMovePossible = !(isInDangerAfterMove(-1, -1, -1, -1, kingsX, kingsY, board));//does the reverse because if he is in danger then he can't move
 	return isMovePossible;//this should be according to what isInDangerAfterMove function returns
 }
 
