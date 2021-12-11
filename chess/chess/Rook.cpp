@@ -12,7 +12,7 @@ Rook::~Rook()
 
 bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int destination_y,std::vector<std::vector<Piece*>> board)
 {
-	if (source_x != destination_x and source_y!=destination_y)
+	if (source_x == destination_x and source_y==destination_y)
 	{
 		return false;
 	}

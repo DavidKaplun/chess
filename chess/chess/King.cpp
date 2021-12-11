@@ -16,10 +16,21 @@ King::~King()
 
 bool King::isMovePossible(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
-	//kingsX=destiantionX
-	//kingsY=destinationY
-	//isInDangerAfterMove(-1,-1,-1,-1,kingsX,kingsY,board)
-	return 1;
+	if (source_x == destination_x and source_y == destination_y)
+	{
+		return false;
+	}
+	
+	if (abs(source_x - destination_x) + abs(source_y - destination_y) > 2)//it should be or 1 or 2 but never bigger or 0(we check if its 0 in the previus if)
+	{
+		return false;
+	}
+
+	int kingsX = destination_x;//it sets the possible positition of the king and checks if in the next position he is under attack
+	int kingsY = destination_y;
+	
+	bool isMovePossible = !(isInDangerAfterMove(-1, -1, -1, -1, kingsX, kingsY, board));
+	return isMovePossible;//this should be according to what isInDangerAfterMove function returns
 }
 
 bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
