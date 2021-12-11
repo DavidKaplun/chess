@@ -118,11 +118,17 @@ void Menu::addPiecesToBoard()
 
 	
 	//black king
-	_board[7][4] = new King('k', 'b');
-	this->_blackKing = _board[7][4];
+	this->_blackKing = new King('k', 'b');
+	this->_blackKing->setX(4);
+	this->_blackKing->setY(7);
+	_board[7][4] = this->_blackKing;
+	
 	//white king
-	_board[0][4] = new King('K', 'w');
-	this->_whiteKing = _board[0][4];
+	this->_whiteKing = new King('K', 'w');
+	this->_whiteKing->setX(4);
+	this->_whiteKing->setY(7);
+	_board[0][4] = this->_whiteKing;
+	
 }
 
 void Menu::incNumOfMoves()
@@ -135,12 +141,12 @@ int Menu::getNumOfMoves()
 	return this->_numOfMoves;
 }
 
-Piece* Menu::getWhiteKing()
+King* Menu::getWhiteKing()
 {
 	return this->_whiteKing;
 }
 
-Piece* Menu::getBlackKing()
+King* Menu::getBlackKing()
 {
 	return this->_blackKing;
 }

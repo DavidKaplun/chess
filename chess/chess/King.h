@@ -21,4 +21,8 @@ public:
 	//Getters
 	int getY();
 	int getX();
+
+	//Setters
+	void setX(int x);
+	void setY(int y);
 };

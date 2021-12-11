@@ -22,7 +22,7 @@ bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int des
 	{
 		bool isPlus = source_y < destination_y;
 		int difference = abs(source_y - destination_y);
-		for (i = 1; i < difference; i++)
+		for (i = 1; i <= difference; i++)
 		{
 			if (isPlus)
 			{
@@ -96,7 +96,7 @@ bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int des
 	{
 		bool isPlus = source_x < destination_x;
 		int difference = abs(source_x - destination_x);
-		for (i = 1; i < difference; i++)
+		for (i = 1; i <= difference; i++)
 		{
 			if (isPlus)
 			{

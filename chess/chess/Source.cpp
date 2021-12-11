@@ -6,6 +6,7 @@ int main()
 {
 	Menu* menu = new Menu();
 	bool run = true;
+	King* cur_king;
 	std::string move;
 	bool isLegalMove = false;
 	char turn;
@@ -46,16 +47,32 @@ int main()
 							{
 								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
 							}
-							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'r')
+							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'R')
 							{
-								isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								cur_king = menu->getWhiteKing();
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+								if (isLegalMove)
+								{
+									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								}
+								
 							}
 						}
 						else
 						{
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
 							{
-								isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								cur_king = menu->getBlackKing();
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+								if (isLegalMove)
+								{
+									isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								}
+								
+							}
+							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'r')
+							{
+								isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
 							}
 						}
 					}

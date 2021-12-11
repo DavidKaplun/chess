@@ -11,8 +11,8 @@ private:
 	std::vector<std::vector<Piece*>> _board;
 	int _numOfMoves;
 	bool isKingInDanger;
-	Piece* _whiteKing;
-	Piece* _blackKing;
+	King* _whiteKing;
+	King* _blackKing;
 public:
 	Menu();
 	void incNumOfMoves();
@@ -21,7 +21,7 @@ public:
 	void addPiecesToBoard();
 	void createBoard();
 	int getNumOfMoves();
-	Piece* getWhiteKing();
-	Piece* getBlackKing();
+	King* getWhiteKing();
+	King* getBlackKing();
 	~Menu();
 };

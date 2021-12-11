@@ -490,3 +490,13 @@ int King::getY()
 {
 	return this->_posY;
 }
+
+void King::setX(int x)
+{
+	this->_posX = x;
+}
+
+void King::setY(int y)
+{
+	this->_posY = y;
+}
