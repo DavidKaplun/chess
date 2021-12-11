@@ -31,33 +31,34 @@ int main()
 			if (isLegalMove)
 			{
 				sourceX = int(move[0]) - 97;
-				sourceY = int(move[1]) - 48;
+				sourceY = int(move[1]) - 49;
 				destinationX = int(move[2]) - 97;
-				destinationY = int(move[3]) - 48;
-				if (menu->getBoard()[sourceX][sourceY] != nullptr)
+				destinationY = int(move[3]) - 49;
+				if (menu->getBoard()[sourceY][sourceX] != nullptr)
 				{
-					if (turn == 'w')
+					if (menu->getBoard()[sourceY][sourceX]->getColor() == turn)
 					{
-						if (menu->getBoard()[sourceX][sourceY]->getType() == 'K')
-						{
-							isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-						}
-						if (!isLegalMove)
-						{
-							std::cout << "Err" << std::endl;
-						}
 
+
+						if (turn == 'w')
+						{
+							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
+							{
+								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+							}
+						}
+						else
+						{
+							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
+							{
+								isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+							}
+						}
 					}
 					else
 					{
-						if (menu->getBoard()[sourceX][sourceY]->getType() == 'k')
-						{
-							isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-						}
-						if (!isLegalMove)
-						{
-							std::cout << "Err" << std::endl;
-						}
+						isLegalMove = false;
+						std::cout << "Error you can't move your opponents pieces!" << std::endl;
 					}
 				}
 				else
@@ -66,7 +67,10 @@ int main()
 					isLegalMove = false;
 				}
 			}
-			
+			else
+			{
+				std::cout << "You are trying to move out of the board. You can't do that!" << std::endl;
+			}
 
 		}
 

@@ -18,11 +18,19 @@ bool King::isMovePossible(int source_x, int source_y, int destination_x, int des
 {
 	if (source_x == destination_x and source_y == destination_y)
 	{
+		std::cout << "This is the same square there is no movement here" << std::endl;
 		return false;
 	}
 	
 	if (abs(source_x - destination_x) >= 2 or abs(source_y - destination_y) >= 2)//it should be or 1 or 2 but never bigger or 0(we check if its 0 in the previus if)
 	{
+		std::cout << "You are trying to move too far my friend" << std::endl;
+		return false;
+	}
+
+	if (board[destination_y][destination_x]!=nullptr)
+	{
+		std::cout << "Square you want to move to is not empty"<<std::endl;
 		return false;
 	}
 
@@ -37,21 +45,25 @@ bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, in
 {
 	if (isInCheckFromRook(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
+		std::cout << "After this move your king will be under check! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromBishop(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
+		std::cout << "After this move your king will be under check! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromKnight(destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
+		std::cout << "After this move your king will be under check! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromPawn(destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
+		std::cout << "After this move your king will be under check! protect him!" << std::endl;
 		return true;
 	}
 
@@ -134,17 +146,21 @@ bool King::isInCheckFromKnight(int destination_x, int destination_y,int kingsX,i
 			{
 				curY = posChecksY[2];
 			}
-				
-			if (board[curY][curX] != nullptr)
+			if (curY >= 0 and curY < 8)
 			{
-				if (board[curY][curX]->getColor() != this->getColor())
+
+
+				if (board[curY][curX] != nullptr)
 				{
-					if (destination_y != curY or destination_x != curX)
+					if (board[curY][curX]->getColor() != this->getColor())
 					{
-						char type = board[curY][curX]->getType();
-						if (type == 'N' or 'n')
+						if (destination_y != curY or destination_x != curX)
 						{
-							return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+							char type = board[curY][curX]->getType();
+							if (type == 'N' or 'n')
+							{
+								return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+							}
 						}
 					}
 				}
@@ -159,21 +175,24 @@ bool King::isInCheckFromKnight(int destination_x, int destination_y,int kingsX,i
 			{
 				curY = posChecksY[3];
 			}
-
-			if (board[curY][curX] != nullptr)
+			if (curY >= 0 and curY < 8)
 			{
-				if (board[curY][curX]->getColor() != this->getColor())
+				if (board[curY][curX] != nullptr)
 				{
-					if (destination_y != curY or destination_x != curX)
+					if (board[curY][curX]->getColor() != this->getColor())
 					{
-						char type = board[curY][curX]->getType();
-						if (type == 'N' or 'n')
+						if (destination_y != curY or destination_x != curX)
 						{
-							return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+							char type = board[curY][curX]->getType();
+							if (type == 'N' or 'n')
+							{
+								return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+							}
 						}
 					}
 				}
 			}
+			
 		}
 	}
 	
@@ -220,6 +239,9 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 			}
 		}
 	}
+	
+	x = kingsX;
+	y = kingsY;
 
 	while (x < BOARD_WIDTH and 0<=y)//checks everything to the right top of the king
 	{
@@ -253,6 +275,9 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 		}
 	}
 
+	x = kingsX;
+	y = kingsY;
+
 	while (0<=x and 0 <=y)//checks everything to the left top of the king
 	{
 		x--;
@@ -285,6 +310,8 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 		}
 	}
 
+	x = kingsX;
+	y = kingsY;
 
 	while (0 <= x and y<BOARD_HEIGHT)//checks everything to the left bottom of the king
 	{
