@@ -46,6 +46,10 @@ int main()
 							{
 								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
 							}
+							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'r')
+							{
+								isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+							}
 						}
 						else
 						{

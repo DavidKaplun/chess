@@ -22,20 +22,144 @@ bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int des
 	{
 		bool isPlus = source_y < destination_y;
 		int difference = abs(source_y - destination_y);
-		for (i = 0; i < difference; i++)
+		for (i = 1; i < difference; i++)
 		{
 			if (isPlus)
 			{
-				if (board[source_y + i][source_x] != nullptr)
+				if (source_y + i == destination_y and source_x == destination_x)
 				{
-					return false;
+					if (board[source_y + i][source_x] != nullptr)
+					{
+						if (board[source_y + i][source_x]->getColor() == this->getColor())
+						{
+							std::cout << "trying to eat your own friends? try again! maybe next time I will allow it" << std::endl;
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+
+					}
+					else
+					{
+						return true;//in this case the square is empty and he can do that
+					}
+				}
+				else
+				{
+					if (board[source_y + i][source_x] != nullptr)
+					{
+						
+						return false;
+
+					}
+				}
+				
+			}
+			else
+			{
+				if (source_y - i == destination_y and source_x == destination_x)
+				{
+					if (board[source_y - i][source_x] != nullptr)
+					{
+						if (board[source_y - i][source_x]->getColor() == this->getColor())
+						{
+							std::cout << "trying to eat your own friends? try again! maybe next time I will allow it" << std::endl;
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+
+					}
+					else
+					{
+						return true;//in this case the square is empty and he can do that
+					}
+				}
+				else
+				{
+					if (board[source_y - i][source_x] != nullptr)
+					{
+
+						return false;
+
+					}
+				}
+			}
+			
+		}
+	}
+	else if(source_y==destination_y)
+	{
+		bool isPlus = source_x < destination_x;
+		int difference = abs(source_x - destination_x);
+		for (i = 1; i < difference; i++)
+		{
+			if (isPlus)
+			{
+				if (source_y == destination_y and source_x+i == destination_x)
+				{
+					if (board[source_y][source_x+i] != nullptr)
+					{
+						if (board[source_y][source_x+i]->getColor() == this->getColor())
+						{
+							std::cout << "trying to eat your own friends? try again! maybe next time I will allow it" << std::endl;
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+
+					}
+					else
+					{
+						return true;//in this case the square is empty and he can do that
+					}
+				}
+				else
+				{
+					if (board[source_y][source_x+i] != nullptr)
+					{
+
+						return false;
+
+					}
 				}
 			}
 			else
 			{
-				if (board[source_y - i][source_x] != nullptr)
+				if (source_y == destination_y and source_x - i == destination_x)
 				{
-					return false;
+					if (board[source_y][source_x - i] != nullptr)
+					{
+						if (board[source_y][source_x - i]->getColor() == this->getColor())
+						{
+							std::cout << "trying to eat your own friends? try again! maybe next time I will allow it" << std::endl;
+							return false;
+						}
+						else
+						{
+							return true;
+						}
+
+					}
+					else
+					{
+						return true;//in this case the square is empty and he can do that
+					}
+				}
+				else
+				{
+					if (board[source_y][source_x - i] != nullptr)
+					{
+
+						return false;
+
+					}
 				}
 			}
 			
@@ -43,26 +167,7 @@ bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int des
 	}
 	else
 	{
-		bool isPlus = source_x < destination_x;
-		int difference = abs(source_x - destination_x);
-		for (i = 0; i < difference; i++)
-		{
-			if (isPlus)
-			{
-				if (board[source_y][source_x+i] != nullptr)
-				{
-					return false;
-				}
-			}
-			else
-			{
-				if (board[source_y][source_x - i] != nullptr)
-				{
-					return false;
-				}
-			}
-			
-		}
+		return false;
 	}
 	return true;
 }
