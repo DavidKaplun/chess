@@ -24,6 +24,147 @@ bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, in
 	return false;
 }
 
+bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+{
+	
+
+	int kingsX = this->getX();
+	int kingsY = this->getY();
+
+	int x = kingsX;
+	int y = kingsY;
+	while (x < BOARD_WIDTH and y < BOARD_HEIGHT)//checks everything to the right bottom of the king
+	{
+		x++;
+		y++;
+		if (x != source_x and y != source_y)
+		{
+			if (x == destination_x and y == destination_y)
+			{
+				break;//breaks the loop because the piece blocks the king from check in this direction
+			}
+			else
+			{
+				if (board[y][x] != nullptr)
+				{
+					if (board[y][x]->getColor() == this->getColor())
+					{
+						break;//because the piece thats on the square is the same color and it covers the check
+					}
+
+					else
+					{
+						char type = board[y][x]->getType();//just to make the if statement shorter
+						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
+						{
+							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+					}
+				}
+			}
+		}
+	}
+
+	while (x < BOARD_WIDTH and 0<=y)//checks everything to the right top of the king
+	{
+		x++;
+		y--;
+		if (x != source_x and y != source_y)
+		{
+			if (x == destination_x and y == destination_y)
+			{
+				break;//breaks the loop because the piece blocks the king from check in this direction
+			}
+			else
+			{
+				if (board[y][x] != nullptr)
+				{
+					if (board[y][x]->getColor() == this->getColor())
+					{
+						break;//because the piece thats on the square is the same color and it covers the check
+					}
+
+					else
+					{
+						char type = board[y][x]->getType();//just to make the if statement shorter
+						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
+						{
+							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+					}
+				}
+			}
+		}
+	}
+
+	while (0<=x and 0 <=y)//checks everything to the left top of the king
+	{
+		x--;
+		y--;
+		if (x != source_x and y != source_y)
+		{
+			if (x == destination_x and y == destination_y)
+			{
+				break;//breaks the loop because the piece blocks the king from check in this direction
+			}
+			else
+			{
+				if (board[y][x] != nullptr)
+				{
+					if (board[y][x]->getColor() == this->getColor())
+					{
+						break;//because the piece thats on the square is the same color and it covers the check
+					}
+
+					else
+					{
+						char type = board[y][x]->getType();//just to make the if statement shorter
+						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
+						{
+							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	while (0 <= x and y<BOARD_HEIGHT)//checks everything to the left bottom of the king
+	{
+		x--;
+		y++;
+		if (x != source_x and y != source_y)
+		{
+			if (x == destination_x and y == destination_y)
+			{
+				break;//breaks the loop because the piece blocks the king from check in this direction
+			}
+			else
+			{
+				if (board[y][x] != nullptr)
+				{
+					if (board[y][x]->getColor() == this->getColor())
+					{
+						break;//because the piece thats on the square is the same color and it covers the check
+					}
+
+					else
+					{
+						char type = board[y][x]->getType();//just to make the if statement shorter
+						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
+						{
+							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
 bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
 	int x = 0;
@@ -150,8 +291,6 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 			}
 		}
 	}
-
-
 
 	return false;
 }
