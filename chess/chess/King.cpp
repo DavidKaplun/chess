@@ -25,6 +25,61 @@ bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, in
 	return false;
 }
 
+bool King::isInCheckFromPawn(int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+{
+	int kingsX = this->getX();
+	int kingsY = this->getY();
+	if (this->getColor() == 'b')
+	{
+		if (board[kingsY - 1][kingsX - 1] != nullptr)
+		{
+			if (board[kingsY - 1][kingsX - 1]->getColor() == 'w')
+			{
+				if (board[kingsY - 1][kingsX - 1]->getType() == 'P')
+				{
+					return true;//checks if a pawn is to the top left of the black king
+				}
+			}
+		}
+
+		else if (board[kingsY - 1][kingsX + 1] != nullptr)
+		{
+			if (board[kingsY - 1][kingsX + 1]->getColor() == 'w')
+			{
+				if (board[kingsY - 1][kingsX + 1]->getType() == 'P')
+				{
+					return true;//checks if a pawn is to the top right of the black king
+				}
+			}
+		}
+	}
+
+	else if (this->getColor() == 'w')
+	{
+		if (board[kingsY + 1][kingsX - 1] != nullptr)
+		{
+			if (board[kingsY + 1][kingsX - 1]->getColor() == 'b')
+			{
+				if (board[kingsY + 1][kingsX - 1]->getType() == 'p')
+				{
+					return true;//checks if a pawn is to the bottom left of the black king
+				}
+			}
+		}
+
+		else if (board[kingsY + 1][kingsX + 1] != nullptr)
+		{
+			if (board[kingsY + 1][kingsX + 1]->getColor() == 'b')
+			{
+				if (board[kingsY + 1][kingsX + 1]->getType() == 'p')
+				{
+					return true;//checks if a pawn is to the bottom right of the black king
+				}
+			}
+		}
+	}
+}
+
 bool King::isInCheckFromKnight(int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
 	int kingsX = this->getX();
