@@ -29,26 +29,13 @@ std::vector<std::vector<Piece*>>& Menu::getBoard()
 void Menu::updateBoard(std::string move)
 {
 	int source_x = move[0] - 97;
-	int source_y = move[1] - 48;
+	int source_y = move[1] - 49;
 
 	int destination_x = move[2] - 97;
-	int destination_y = move[3] - 48;
+	int destination_y = move[3] - 49;
 
-	if (this->_board[source_y][source_x] == nullptr)
-	{
-		std::cout << "You can't move because there is no piece in this square" << std::endl;
-	}
-	else if(this->_board[destination_y][destination_x]==nullptr)
-	{
-		if (this->_board[source_y][source_x]->getColor() == this->_board[destination_y][destination_x]->getColor())
-		{
-			std::cout << "You can't eat a piece thats on your team" << std::endl;
-		}
-	}
-	else
-	{
-		this->_board[source_y][source_x]->isMovePossible(source_x,source_y,destination_x,destination_y,this->_board);
-	}
+	this->_board[destination_y][destination_x] = this->_board[source_y][source_x];
+	this->_board[source_y][source_x] = nullptr;
 }
 void printBoard(std::vector<std::vector<Piece*>>& board)
 {

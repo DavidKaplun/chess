@@ -74,7 +74,7 @@ int main()
 
 		}
 
-
+		menu->updateBoard(move);
 		isLegalMove = false;
 		menu->incNumOfMoves();
 

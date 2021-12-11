@@ -30,8 +30,11 @@ bool King::isMovePossible(int source_x, int source_y, int destination_x, int des
 
 	if (board[destination_y][destination_x]!=nullptr)
 	{
-		std::cout << "Square you want to move to is not empty"<<std::endl;
-		return false;
+		if (board[destination_y][destination_x]->getColor() == this->getColor())
+		{
+			std::cout << "friendly fire is not allowed!" << std::endl;
+			return false;
+		}
 	}
 
 	int kingsX = destination_x;//it sets the possible positition of the king and checks if in the next position he is under attack
@@ -206,12 +209,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 {
 	
 
-	int x = kingsX;
-	int y = kingsY;
+	int x = kingsX+1;
+	int y = kingsY+1;
 	while (x < BOARD_WIDTH and y < BOARD_HEIGHT)//checks everything to the right bottom of the king
 	{
-		x++;
-		y++;
 		if (x != source_x and y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
@@ -238,15 +239,15 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 				}
 			}
 		}
+		x++;
+		y++;
 	}
 	
-	x = kingsX;
-	y = kingsY;
+	x = kingsX+1;
+	y = kingsY-1;
 
 	while (x < BOARD_WIDTH and 0<=y)//checks everything to the right top of the king
 	{
-		x++;
-		y--;
 		if (x != source_x and y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
@@ -273,15 +274,15 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 				}
 			}
 		}
+		x++;
+		y--;
 	}
 
-	x = kingsX;
-	y = kingsY;
+	x = kingsX-1;
+	y = kingsY-1;
 
 	while (0<=x and 0 <=y)//checks everything to the left top of the king
 	{
-		x--;
-		y--;
 		if (x != source_x and y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
@@ -308,15 +309,15 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 				}
 			}
 		}
+		x--;
+		y--;
 	}
 
-	x = kingsX;
-	y = kingsY;
+	x = kingsX-1;
+	y = kingsY+1;
 
 	while (0 <= x and y<BOARD_HEIGHT)//checks everything to the left bottom of the king
 	{
-		x--;
-		y++;
 		if (x != source_x and y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
@@ -343,6 +344,8 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 				}
 			}
 		}
+		x--;
+		y++;
 	}
 
 	return false;
