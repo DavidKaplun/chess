@@ -3,6 +3,7 @@
 #define BOARD_HEIGHT 8
 #define BOARD_WIDTH 8
 
+
 King::King(char type, char color) :Piece(type, color)
 {
 
@@ -23,6 +24,80 @@ bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, in
 {
 	return false;
 }
+
+bool King::isInCheckFromKnight(int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+{
+	int kingsX = this->getX();
+	int kingsY = this->getY();
+	int posChecksX[4] = { kingsX + 1,kingsX - 1,kingsX + 2,kingsX - 2 };
+	int posChecksY[4] = { kingsY + 1,kingsY - 1,kingsY + 2,kingsY - 2 };
+
+	int i = 0;
+	int curX = 0;
+	int curY = 0;
+
+	for (i = 0; i < 4; i++)
+	{
+		curX = posChecksX[i];
+		if (curX >= 0 and curX <= 8)
+		{
+			if (i > 1)//because we check the first 2 x with the last 2 y and the opposite(a knight can't move 2 squares forward and 2 to the side)
+			{
+				curY = posChecksY[0];
+			}
+
+			else
+			{
+				curY = posChecksY[2];
+			}
+				
+			if (board[curY][curX] != nullptr)
+			{
+				if (board[curY][curX]->getColor() != this->getColor())
+				{
+					if (destination_y != curY or destination_x != curX)
+					{
+						char type = board[curY][curX]->getType();
+						if (type == 'N' or 'n')
+						{
+							return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+						}
+					}
+				}
+			}
+
+			if (i > 1)//because we check the first 2 x with the last 2 y and the opposite(a knight can't move 2 squares forward and 2 to the side)
+			{
+				curY = posChecksY[1];
+			}
+
+			else
+			{
+				curY = posChecksY[3];
+			}
+
+			if (board[curY][curX] != nullptr)
+			{
+				if (board[curY][curX]->getColor() != this->getColor())
+				{
+					if (destination_y != curY or destination_x != curX)
+					{
+						char type = board[curY][curX]->getType();
+						if (type == 'N' or 'n')
+						{
+							return true;//yes there is check if the knight is on this square and the requested move doesn't cover this square
+						}
+					}
+				}
+			}
+		}
+	}
+	
+
+	return false;
+}
+
+
 
 bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
