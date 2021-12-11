@@ -20,5 +20,8 @@ public:
 	void updateBoard(std::string move);
 	void addPiecesToBoard();
 	void createBoard();
+	int getNumOfMoves();
+	Piece* getWhiteKing();
+	Piece* getBlackKing();
 	~Menu();
 };

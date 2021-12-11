@@ -143,3 +143,17 @@ void Menu::incNumOfMoves()
 	this->_numOfMoves++;
 }
 
+int Menu::getNumOfMoves() 
+{
+	return this->_numOfMoves;
+}
+
+Piece* Menu::getWhiteKing()
+{
+	return this->_whiteKing;
+}
+
+Piece* Menu::getBlackKing()
+{
+	return this->_blackKing;
+}

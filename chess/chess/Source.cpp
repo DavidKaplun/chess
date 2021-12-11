@@ -5,18 +5,79 @@ bool check_move(std::string move);
 int main()
 {
 	Menu* menu = new Menu();
-	printBoard(menu->getBoard());
+	bool run = true;
 	std::string move;
 	bool isLegalMove = false;
-	while (isLegalMove == false)
+	char turn;
+	int sourceX, sourceY, destinationX, destinationY;
+	while (run)
 	{
-		std::cout << "Enter Your move(example:e2e4):" << std::endl;
-		std::cin >> move;
-		isLegalMove = check_move(move);
+		printBoard(menu->getBoard());
+		if (menu->getNumOfMoves() % 2 == 0)
+		{
+			std::cout << "Turn white" << std::endl;
+			turn = 'w';
+		}
+		else
+		{
+			std::cout << "Turn black" << std::endl;
+			turn = 'b';
+		}
+		while (isLegalMove == false)
+		{
+			std::cout << "Enter Your move(example:e2e4):" << std::endl;
+			std::cin >> move;
+			isLegalMove = check_move(move);
+			if (isLegalMove)
+			{
+				sourceX = int(move[0]) - 97;
+				sourceY = int(move[1]) - 48;
+				destinationX = int(move[2]) - 97;
+				destinationY = int(move[3]) - 48;
+				if (menu->getBoard()[sourceX][sourceY] != nullptr)
+				{
+					if (turn == 'w')
+					{
+						if (menu->getBoard()[sourceX][sourceY]->getType() == 'K')
+						{
+							isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+						}
+						if (!isLegalMove)
+						{
+							std::cout << "Err" << std::endl;
+						}
+
+					}
+					else
+					{
+						if (menu->getBoard()[sourceX][sourceY]->getType() == 'k')
+						{
+							isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+						}
+						if (!isLegalMove)
+						{
+							std::cout << "Err" << std::endl;
+						}
+					}
+				}
+				else
+				{
+					std::cout << "Error: you cant move from an empty square" << std::endl;
+					isLegalMove = false;
+				}
+			}
+			
+
+		}
+
+
+		isLegalMove = false;
+		menu->incNumOfMoves();
+
 	}
-	
-	menu->incNumOfMoves();
 }
+
+
 bool check_move(std::string move)
 {
 	if (move.length()!=4)

@@ -21,7 +21,7 @@ bool King::isMovePossible(int source_x, int source_y, int destination_x, int des
 		return false;
 	}
 	
-	if (abs(source_x - destination_x) + abs(source_y - destination_y) > 2)//it should be or 1 or 2 but never bigger or 0(we check if its 0 in the previus if)
+	if (abs(source_x - destination_x) >= 2 or abs(source_y - destination_y) >= 2)//it should be or 1 or 2 but never bigger or 0(we check if its 0 in the previus if)
 	{
 		return false;
 	}
