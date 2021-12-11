@@ -353,8 +353,8 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 
 bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
-	int x = 0;
-	int y = 0;
+	int x = kingsX;
+	int y = kingsY;
 
 
 	for (x = kingsX; x < BOARD_WIDTH; x++)//this for loop checks everything to the right of the king
@@ -387,6 +387,9 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 		}
 	}
 
+	x = kingsX;
+	y = kingsY;
+
 	for (x = kingsX; 0<=x; x--)//this for loop checks everything to the left of the king
 	{
 		if (x != source_x)//we need to address this square as empty because after the move its going to be empty
@@ -417,6 +420,9 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 		}
 	}
 
+	x = kingsX;
+	y = kingsY;
+
 	for (y = kingsY; y < BOARD_HEIGHT; y++)//checks every square below the king(remember the index of the squares at the top is lower then at the bottom)
 	{
 		if (source_y != y)//we need to address this square as empty because after the move its going to be empty
@@ -445,6 +451,9 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 			}
 		}
 	}
+
+	x = kingsX;
+	y = kingsY;
 
 	for (y = kingsY; 0<=y; y--)//checks every square above the king(remember the index of the squares at the top is lower then at the bottom)
 	{

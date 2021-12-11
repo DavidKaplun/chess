@@ -62,8 +62,6 @@ int main()
 						{
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
 							{
-								cur_king = menu->getBlackKing();
-								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
 								if (isLegalMove)
 								{
 									isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
@@ -72,7 +70,13 @@ int main()
 							}
 							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'r')
 							{
-								isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								cur_king = menu->getBlackKing();
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+								if (isLegalMove)
+								{
+									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								}
+								
 							}
 						}
 					}
