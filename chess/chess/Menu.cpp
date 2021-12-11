@@ -126,7 +126,7 @@ void Menu::addPiecesToBoard()
 	//white king
 	this->_whiteKing = new King('K', 'w');
 	this->_whiteKing->setX(4);
-	this->_whiteKing->setY(7);
+	this->_whiteKing->setY(0);
 	_board[0][4] = this->_whiteKing;
 	
 }
