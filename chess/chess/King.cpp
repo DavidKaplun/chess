@@ -16,19 +16,39 @@ King::~King()
 
 bool King::isMovePossible(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
-	//isInDangerAfterMove(destination_x,destination_y)
+	//kingsX=destiantionX
+	//kingsY=destinationY
+	//isInDangerAfterMove(-1,-1,-1,-1,kingsX,kingsY,board)
 	return 1;
 }
 
-bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
+	if (isInCheckFromRook(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
+	{
+		return true;
+	}
+
+	if (isInCheckFromBishop(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
+	{
+		return true;
+	}
+
+	if (isInCheckFromKnight(destination_x, destination_y, kingsX, kingsY, board) == true)
+	{
+		return true;
+	}
+
+	if (isInCheckFromPawn(destination_x, destination_y, kingsX, kingsY, board) == true)
+	{
+		return true;
+	}
+
 	return false;
 }
 
-bool King::isInCheckFromPawn(int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+bool King::isInCheckFromPawn(int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
-	int kingsX = this->getX();
-	int kingsY = this->getY();
 	if (this->getColor() == 'b')
 	{
 		if (board[kingsY - 1][kingsX - 1] != nullptr)
@@ -80,10 +100,8 @@ bool King::isInCheckFromPawn(int destination_x, int destination_y, std::vector<s
 	}
 }
 
-bool King::isInCheckFromKnight(int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+bool King::isInCheckFromKnight(int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
-	int kingsX = this->getX();
-	int kingsY = this->getY();
 	int posChecksX[4] = { kingsX + 1,kingsX - 1,kingsX + 2,kingsX - 2 };
 	int posChecksY[4] = { kingsY + 1,kingsY - 1,kingsY + 2,kingsY - 2 };
 
@@ -154,12 +172,9 @@ bool King::isInCheckFromKnight(int destination_x, int destination_y, std::vector
 
 
 
-bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
 	
-
-	int kingsX = this->getX();
-	int kingsY = this->getY();
 
 	int x = kingsX;
 	int y = kingsY;
@@ -295,13 +310,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 	return false;
 }
 
-bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
+bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
 	int x = 0;
 	int y = 0;
-
-	int kingsX = this->getX();
-	int kingsY = this->getY();
 
 
 	for (x = kingsX; x < BOARD_WIDTH; x++)//this for loop checks everything to the right of the king
