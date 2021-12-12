@@ -41,8 +41,9 @@ int main()
 					{
 
 
-						if (turn == 'w')
+						if (turn == 'w')//for white
 						{
+							//for the king
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
 							{
 								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
@@ -52,7 +53,9 @@ int main()
 									menu->getWhiteKing()->setY(destinationY);
 								}
 							}
-							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'R')
+
+							//for the rest of the pieces
+							else
 							{
 								cur_king = menu->getWhiteKing();
 								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
@@ -63,8 +66,11 @@ int main()
 								
 							}
 						}
-						else
+
+
+						else//for black
 						{
+							//for the king
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
 							{
 								if (isLegalMove)
@@ -78,7 +84,9 @@ int main()
 								}
 								
 							}
-							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'r')
+
+							//for the rest of the pieces
+							else
 							{
 								cur_king = menu->getBlackKing();
 								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));

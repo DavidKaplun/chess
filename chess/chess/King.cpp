@@ -235,6 +235,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
 						}
+						else
+						{
+							break;
+						}
 					}
 				}
 			}
@@ -269,6 +273,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+						else
+						{
+							break;
 						}
 					}
 				}
@@ -305,6 +313,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
 						}
+						else
+						{
+							break;
+						}
 					}
 				}
 			}
@@ -339,6 +351,10 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 						if (type == 'Q' or type == 'q' or type == 'b' or type == 'B')
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+						else
+						{
+							break;
 						}
 					}
 				}
@@ -379,6 +395,10 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
 						}
+						else
+						{
+							break;
+						}
 					}
 				}
 			}
@@ -411,6 +431,10 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 						if (type == 'Q' or type == 'q' or type == 'r' or type == 'R')
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+						else
+						{
+							break;
 						}
 					}
 				}
@@ -445,6 +469,10 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
 						}
+						else 
+						{
+							break;
+						}
 					}
 				}
 			}
@@ -476,6 +504,10 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 						if (type == 'Q' or type == 'q' or type == 'r' or type == 'R')
 						{
 							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+						else
+						{
+							break;
 						}
 					}
 				}
