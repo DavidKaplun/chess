@@ -213,7 +213,7 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 	int y = kingsY+1;
 	while (x < BOARD_WIDTH and y < BOARD_HEIGHT)//checks everything to the right bottom of the king
 	{
-		if (x != source_x and y != source_y)
+		if (x != source_x or y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
 			{
@@ -248,7 +248,7 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 
 	while (x < BOARD_WIDTH and 0<=y)//checks everything to the right top of the king
 	{
-		if (x != source_x and y != source_y)
+		if (x != source_x or y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
 			{
@@ -283,7 +283,7 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 
 	while (0<=x and 0 <=y)//checks everything to the left top of the king
 	{
-		if (x != source_x and y != source_y)
+		if (x != source_x or y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
 			{
@@ -318,7 +318,7 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 
 	while (0 <= x and y<BOARD_HEIGHT)//checks everything to the left bottom of the king
 	{
-		if (x != source_x and y != source_y)
+		if (x != source_x or y != source_y)
 		{
 			if (x == destination_x and y == destination_y)
 			{
