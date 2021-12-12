@@ -46,6 +46,11 @@ int main()
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
 							{
 								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								if (isLegalMove)
+								{
+									menu->getWhiteKing()->setX(destinationX);
+									menu->getWhiteKing()->setY(destinationY);
+								}
 							}
 							else if (menu->getBoard()[sourceY][sourceX]->getType() == 'R')
 							{
@@ -65,6 +70,11 @@ int main()
 								if (isLegalMove)
 								{
 									isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+									if (isLegalMove)
+									{
+										menu->getBlackKing()->setX(destinationX);
+										menu->getBlackKing()->setY(destinationY);
+									}
 								}
 								
 							}

@@ -48,25 +48,25 @@ bool King::isInDangerAfterMove(int source_x, int source_y, int destination_x, in
 {
 	if (isInCheckFromRook(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
-		std::cout << "After this move your king will be under check! protect him!" << std::endl;
+		std::cout << "After this move your king will be under check(rook)! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromBishop(source_x, source_y, destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
-		std::cout << "After this move your king will be under check! protect him!" << std::endl;
+		std::cout << "After this move your king will be under check(bishop)! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromKnight(destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
-		std::cout << "After this move your king will be under check! protect him!" << std::endl;
+		std::cout << "After this move your king will be under check(knight)! protect him!" << std::endl;
 		return true;
 	}
 
 	if (isInCheckFromPawn(destination_x, destination_y, kingsX, kingsY, board) == true)
 	{
-		std::cout << "After this move your king will be under check! protect him!" << std::endl;
+		std::cout << "After this move your king will be under check(pawn)! protect him!" << std::endl;
 		return true;
 	}
 
@@ -353,13 +353,45 @@ bool King::isInCheckFromBishop(int source_x, int source_y, int destination_x, in
 
 bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int destination_y,int kingsX,int kingsY, std::vector<std::vector<Piece*>> board)
 {
-	int x = kingsX;
+	int x = kingsX+1;
 	int y = kingsY;
 
-
-	for (x = kingsX; x < BOARD_WIDTH; x++)//this for loop checks everything to the right of the king
+	for (x = kingsX+1; x < BOARD_WIDTH; x++)//this for loop checks everything to the right of the king
 	{
-		if (x != source_x)//we need to address this square as empty because after the move its going to be empty
+		if (x != source_x or y!=source_y)//we need to address this square as empty because after the move its going to be empty
+		{
+			if (x == destination_x and kingsY == destination_y)
+			{
+				break;//breaks the loop because the piece blocks the king from check in this direction
+			}
+			else
+			{
+				if (board[kingsY][x] != nullptr)//checks if the square is not empty
+				{
+					if (board[kingsY][x]->getColor() == this->getColor())
+					{
+						break;//because the piece thats on the square is the same color and it covers the check
+					}
+					else
+					{
+						char type = board[kingsY][x]->getType();//just to make the if statement shorter
+						if (type == 'Q' or type == 'q' or type == 'r' or type == 'R')
+						{
+							return true;//if the piece on this square is a queen or a rook then its a check
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	x = kingsX-1;
+	y = kingsY;
+
+	for (x = kingsX-1; 0<=x; x--)//this for loop checks everything to the left of the king
+	{
+		if (x != source_x or y!=source_y)//we need to address this square as empty because after the move its going to be empty
 		{
 			if (x == destination_x and kingsY == destination_y)
 			{
@@ -388,44 +420,11 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 	}
 
 	x = kingsX;
-	y = kingsY;
+	y = kingsY+1;
 
-	for (x = kingsX; 0<=x; x--)//this for loop checks everything to the left of the king
+	for (y = kingsY+1; y < BOARD_HEIGHT; y++)//checks every square below the king(remember the index of the squares at the top is lower then at the bottom)
 	{
-		if (x != source_x)//we need to address this square as empty because after the move its going to be empty
-		{
-			if (x == destination_x and kingsY == destination_y)
-			{
-				break;//breaks the loop because the piece blocks the king from check in this direction
-			}
-			else
-			{
-				if (board[kingsY][x] != nullptr)//checks if the square is not empty
-				{
-					if (board[kingsY][x]->getColor() == this->getColor())
-					{
-						break;//because the piece thats on the square is the same color and it covers the check
-					}
-					else
-					{
-						char type = board[kingsY][x]->getType();//just to make the if statement shorter
-						if (type == 'Q' or type == 'q' or type == 'r' or type == 'R')
-						{
-							return true;//if the piece on this square is a queen or a rook then its a check
-						}
-					}
-				}
-			}
-
-		}
-	}
-
-	x = kingsX;
-	y = kingsY;
-
-	for (y = kingsY; y < BOARD_HEIGHT; y++)//checks every square below the king(remember the index of the squares at the top is lower then at the bottom)
-	{
-		if (source_y != y)//we need to address this square as empty because after the move its going to be empty
+		if (source_y != y or x!=source_x)//we need to address this square as empty because after the move its going to be empty
 		{
 			if (y == destination_y and kingsX == destination_x)
 			{
@@ -453,11 +452,11 @@ bool King::isInCheckFromRook(int source_x, int source_y, int destination_x, int 
 	}
 
 	x = kingsX;
-	y = kingsY;
+	y = kingsY-1;
 
-	for (y = kingsY; 0<=y; y--)//checks every square above the king(remember the index of the squares at the top is lower then at the bottom)
+	for (y = kingsY-1; 0<=y; y--)//checks every square above the king(remember the index of the squares at the top is lower then at the bottom)
 	{
-		if (source_y != y)//we need to address this square as empty because after the move its going to be empty
+		if (source_y != y or x!=source_x)//we need to address this square as empty because after the move its going to be empty
 		{
 			if (y == destination_y and kingsX == destination_x)
 			{
