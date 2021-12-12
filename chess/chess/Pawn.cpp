@@ -14,3 +14,8 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 {
 	return 1;
 }
+
+void Pawn::deletePiece()
+{
+	this->~Pawn();
+}

@@ -28,12 +28,19 @@ std::vector<std::vector<Piece*>>& Menu::getBoard()
 
 void Menu::updateBoard(std::string move)
 {
+	Piece* pieceToDelete;
 	int source_x = move[0] - 97;
 	int source_y = move[1] - 49;
 
 	int destination_x = move[2] - 97;
 	int destination_y = move[3] - 49;
-
+	
+	
+	if (this->_board[destination_y][destination_x] != nullptr)
+	{
+		pieceToDelete = this->_board[destination_y][destination_x];
+		pieceToDelete->deletePiece();
+	}
 	this->_board[destination_y][destination_x] = this->_board[source_y][source_x];
 	this->_board[source_y][source_x] = nullptr;
 }
@@ -68,11 +75,9 @@ void Menu::createBoard()
 	std::vector<Piece*> row;
 	for (y = 0; y < BOARD_HEIGHT; y++)
 	{
-		//board.push_back(new std::vector<Piece*>);
 		for (x = 0; x < BOARD_WIDTH; x++)
 		{
 			row.push_back(nullptr);
-			//board[y].push_back(nullptr);
 		}
 		_board.push_back(row);
 	}

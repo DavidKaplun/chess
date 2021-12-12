@@ -179,3 +179,7 @@ bool Bishop::isMovePossible(int source_x, int source_y, int destination_x, int d
 	std::cout << "This shouldn't happen fix me!" << std::endl;
 }
 
+void Bishop::deletePiece()
+{
+	this->~Bishop();
+}

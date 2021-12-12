@@ -171,3 +171,8 @@ bool Rook::isMovePossible(int source_x, int source_y, int destination_x, int des
 	}
 	return true;
 }
+
+void Rook::deletePiece()
+{
+	this->~Rook();
+}

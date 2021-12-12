@@ -540,3 +540,8 @@ void King::setY(int y)
 {
 	this->_posY = y;
 }
+
+void King::deletePiece()
+{
+	this->~King();
+}

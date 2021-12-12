@@ -324,3 +324,8 @@ bool Queen::isMovePossible(int source_x, int source_y, int destination_x, int de
 
 	return false;
 }
+
+void Queen::deletePiece()
+{
+	this->~Queen();
+}
