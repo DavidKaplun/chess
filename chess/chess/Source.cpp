@@ -46,11 +46,17 @@ int main()
 							//for the king
 							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
 							{
-								isLegalMove = menu->getWhiteKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								cur_king = menu->getWhiteKing();
+								isLegalMove= cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
 								if (isLegalMove)
 								{
-									menu->getWhiteKing()->setX(destinationX);
-									menu->getWhiteKing()->setY(destinationY);
+									isLegalMove = !(cur_king->isInCheckFromKing(menu->getBlackKing()->getX(), menu->getBlackKing()->getY(),destinationX,destinationY));
+									if (isLegalMove)
+									{
+										menu->getWhiteKing()->setX(destinationX);
+										menu->getWhiteKing()->setY(destinationY);
+									}
+									
 								}
 							}
 
@@ -75,11 +81,17 @@ int main()
 							{
 								if (isLegalMove)
 								{
-									isLegalMove = menu->getBlackKing()->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+									cur_king = menu->getBlackKing();
+									isLegalMove = cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
 									if (isLegalMove)
 									{
-										menu->getBlackKing()->setX(destinationX);
-										menu->getBlackKing()->setY(destinationY);
+										isLegalMove = !(cur_king->isInCheckFromKing(menu->getWhiteKing()->getX(), menu->getWhiteKing()->getY(),destinationX,destinationY));
+										if (isLegalMove)
+										{
+											menu->getBlackKing()->setX(destinationX);
+											menu->getBlackKing()->setY(destinationY);
+										}
+										
 									}
 								}
 								

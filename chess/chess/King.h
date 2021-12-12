@@ -18,6 +18,7 @@ public:
 	bool isInCheckFromBishop(int source_x, int source_y, int destination_x, int destination_y, int kingsX, int kingsY, std::vector<std::vector<Piece*>> board);
 	bool isInCheckFromKnight(int destination_x, int destination_y, int kingsX, int kingsY, std::vector<std::vector<Piece*>> board);
 	bool isInCheckFromPawn(int destination_x, int destination_y, int kingsX, int kingsY, std::vector<std::vector<Piece*>> board);
+	bool isInCheckFromKing(int anotherKingsX,int anotherKingsY,int thisKingsX, int thisKingsY);
 
 	//Getters
 	int getY();

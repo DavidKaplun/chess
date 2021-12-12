@@ -545,3 +545,22 @@ void King::deletePiece()
 {
 	this->~King();
 }
+
+bool King::isInCheckFromKing(int anotherKingsX,int anotherKingsY,int thisKingsX,int thisKingsY)
+{
+	if (abs(thisKingsX - anotherKingsX) == 1 and abs(thisKingsY - anotherKingsY) == 1)
+	{
+		std::cout << "You want to kill yourself or what?" << std::endl;
+		return true;
+	}
+	else if (abs(thisKingsX - anotherKingsX) == 1 and thisKingsY == anotherKingsY)
+	{
+		return true;
+	}
+
+	else if (thisKingsX==anotherKingsX and abs(thisKingsY - anotherKingsY)==1)
+	{
+		return true;
+	}
+	return false;
+}
