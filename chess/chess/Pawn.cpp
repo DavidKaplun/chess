@@ -18,6 +18,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 		{
 			if (board[destination_y][destination_x] == nullptr)
 			{
+				this->_isFirstMove = false;
 				return true;
 			}
 			else
@@ -29,6 +30,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 		{
 			if (board[destination_y][destination_x] == nullptr and board[destination_y - 1][destination_x] == nullptr)
 			{
+				this->_isFirstMove = false;
 				return true;
 			}
 			else
@@ -42,6 +44,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 			{
 				if (board[destination_y][destination_x]->getColor() != this->getColor())
 				{
+					this->_isFirstMove = false;
 					return true;
 				}
 				else
@@ -63,6 +66,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 		{
 			if (board[destination_y][destination_x] == nullptr)
 			{
+				this->_isFirstMove = false;
 				return true;
 			}
 			else
@@ -74,6 +78,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 		{
 			if (board[destination_y][destination_x] == nullptr and board[destination_y + 1][destination_x] == nullptr)
 			{
+				this->_isFirstMove = false;
 				return true;
 			}
 			else
@@ -87,6 +92,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 			{
 				if (board[destination_y][destination_x]->getColor() != this->getColor())
 				{
+					this->_isFirstMove = false;
 					return true;
 				}
 				else

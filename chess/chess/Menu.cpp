@@ -133,6 +133,13 @@ void Menu::addPiecesToBoard()
 	this->_whiteKing->setX(4);
 	this->_whiteKing->setY(0);
 	_board[0][4] = this->_whiteKing;
+
+	int x = 0;
+	for (x = 0; x < BOARD_WIDTH; x++)
+	{
+		_board[1][x] = new Pawn('P', 'w');//sets up the white pawns
+		_board[6][x] = new Pawn('p', 'b');
+	}
 	
 }
 
