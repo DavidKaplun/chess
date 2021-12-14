@@ -6,7 +6,7 @@
 
 King::King(char type, char color) :Piece(type, color)
 {
-
+	this->_isFirstMove = true;
 }
 
 King::~King()

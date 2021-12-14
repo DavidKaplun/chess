@@ -242,7 +242,7 @@ void main()
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
 
-	strcpy_s(msgToGraphics, "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"); // just example...
+	strcpy_s(msgToGraphics, "rnbkqbnLpppppppp################################PPPPPPPPRNBKQBNR1"); // just example...
 	
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 
@@ -269,6 +269,7 @@ void main()
 
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
+		std::cout << msgFromGraphics << std::endl;
 	}
 
 	p.close();

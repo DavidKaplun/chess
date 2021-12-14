@@ -6,6 +6,7 @@ class King :public Piece
 private:
 	int _posX;
 	int _posY;
+	bool _isFirstMove;
 public:
 	King(char type, char color);
 	~King();
