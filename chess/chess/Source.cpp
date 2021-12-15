@@ -9,7 +9,7 @@ using std::endl;
 using std::string;
 
 bool check_move(std::string move);
-void main()
+void main1()
 {
 	Menu* menu = new Menu();
 	bool run = true;
@@ -209,7 +209,7 @@ in order to read and write information from and to the Backend
 
 
 
-void main1()
+void main()
 {
 	srand(time_t(NULL));
 
@@ -241,7 +241,7 @@ void main1()
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
 
-	strcpy_s(msgToGraphics, "rnbkqbnLpppppppp################################PPPPPPPPRNBKQBNR1"); // just example...
+	strcpy_s(msgToGraphics, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR1"); // just example...
 	
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 
