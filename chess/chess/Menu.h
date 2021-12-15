@@ -23,5 +23,6 @@ public:
 	int getNumOfMoves();
 	King* getWhiteKing();
 	King* getBlackKing();
+
 	~Menu();
 };

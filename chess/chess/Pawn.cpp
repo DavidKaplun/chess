@@ -12,7 +12,7 @@ Pawn::~Pawn()
 
 bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int destination_y, std::vector<std::vector<Piece*>> board)
 {
-	if (this->getColor() == 'w')
+	if (this->getColor() == 'b')
 	{
 		if (destination_y == source_y + 1 and source_x == destination_x)
 		{
@@ -60,7 +60,7 @@ bool Pawn::isMovePossible(int source_x, int source_y, int destination_x, int des
 		return false;
 	}
 
-	else if (this->getColor() == 'b')
+	else if (this->getColor() == 'w')
 	{
 		if (destination_y == source_y - 1 and source_x == destination_x)
 		{

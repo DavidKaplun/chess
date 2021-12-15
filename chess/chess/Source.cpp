@@ -9,7 +9,7 @@ using std::endl;
 using std::string;
 
 bool check_move(std::string move);
-void main1()
+void main()
 {
 	Menu* menu = new Menu();
 	bool run = true;
@@ -39,9 +39,9 @@ void main1()
 			if (isLegalMove)
 			{
 				sourceX = int(move[0]) - 97;
-				sourceY = int(move[1]) - 49;
+				sourceY = 7-(int(move[1]) - 49);
 				destinationX = int(move[2]) - 97;
-				destinationY = int(move[3]) - 49;
+				destinationY = 7-(int(move[3]) - 49);
 				if (menu->getBoard()[sourceY][sourceX] != nullptr)
 				{
 					if (menu->getBoard()[sourceY][sourceX]->getColor() == turn)
@@ -71,7 +71,7 @@ void main1()
 							else
 							{
 								cur_king = menu->getWhiteKing();
-								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard())); //!
 								if (isLegalMove)
 								{
 									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
@@ -209,7 +209,7 @@ in order to read and write information from and to the Backend
 
 
 
-void main()
+void main1()
 {
 	srand(time_t(NULL));
 
@@ -236,7 +236,6 @@ void main()
 			return;
 		}
 	}
-	
 
 	char msgToGraphics[1024];
 	// msgToGraphics should contain the board string accord the protocol
