@@ -162,3 +162,39 @@ King* Menu::getBlackKing()
 {
 	return this->_blackKing;
 }
+
+
+std::string Menu::readFromBoard()
+{
+	std::string board;
+	int x = 0;
+	int y = 0;
+	char type;
+	for (y = 7; 0<=y; y--)
+	{
+		for (x = 0; x < BOARD_WIDTH; x++)
+		{
+			if (this->getBoard()[y][x] != nullptr)
+			{
+				type = this->getBoard()[y][x]->getType();
+				if (type >= 65 and type <= 90)
+				{
+					type += 32;
+				}
+				else
+				{
+					type -= 32;
+				}
+				board += type;
+				
+			}
+			else
+			{
+				board += "#";
+			}
+		}
+	}
+	board += "1";
+	return board;
+	
+}

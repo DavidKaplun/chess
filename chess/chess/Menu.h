@@ -23,6 +23,7 @@ public:
 	int getNumOfMoves();
 	King* getWhiteKing();
 	King* getBlackKing();
+	std::string readFromBoard();
 
 	~Menu();
 };

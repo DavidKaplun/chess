@@ -9,139 +9,139 @@ using std::endl;
 using std::string;
 
 bool check_move(std::string move);
-void main1()
-{
-	Menu* menu = new Menu();
-	bool run = true;
-	King* cur_king;
-	std::string move;
-	bool isLegalMove = false;
-	char turn;
-	int sourceX, sourceY, destinationX, destinationY;
-	while (run)
-	{
-		printBoard(menu->getBoard());
-		if (menu->getNumOfMoves() % 2 == 0)
-		{
-			std::cout << "Turn white" << std::endl;
-			turn = 'w';
-		}
-		else
-		{
-			std::cout << "Turn black" << std::endl;
-			turn = 'b';
-		}
-		while (isLegalMove == false)
-		{
-			std::cout << "Enter Your move(example:e2e4):" << std::endl;
-			std::cin >> move;
-			isLegalMove = check_move(move);
-			if (isLegalMove)
-			{
-				sourceX = int(move[0]) - 97;
-				sourceY = 7-(int(move[1]) - 49);
-				destinationX = int(move[2]) - 97;
-				destinationY = 7-(int(move[3]) - 49);
-				if (menu->getBoard()[sourceY][sourceX] != nullptr)
-				{
-					if (menu->getBoard()[sourceY][sourceX]->getColor() == turn)
-					{
-
-
-						if (turn == 'w')//for white
-						{
-							//for the king
-							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
-							{
-								cur_king = menu->getWhiteKing();
-								isLegalMove= cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-								if (isLegalMove)
-								{
-									isLegalMove = !(cur_king->isInCheckFromKing(menu->getBlackKing()->getX(), menu->getBlackKing()->getY(),destinationX,destinationY));
-									if (isLegalMove)
-									{
-										menu->getWhiteKing()->setX(destinationX);
-										menu->getWhiteKing()->setY(destinationY);
-									}
-									
-								}
-							}
-
-							//for the rest of the pieces
-							else
-							{
-								cur_king = menu->getWhiteKing();
-								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard())); //!
-								if (isLegalMove)
-								{
-									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-								}
-								
-							}
-						}
-
-
-						else//for black
-						{
-							//for the king
-							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
-							{
-								if (isLegalMove)
-								{
-									cur_king = menu->getBlackKing();
-									isLegalMove = cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-									if (isLegalMove)
-									{
-										isLegalMove = !(cur_king->isInCheckFromKing(menu->getWhiteKing()->getX(), menu->getWhiteKing()->getY(),destinationX,destinationY));
-										if (isLegalMove)
-										{
-											menu->getBlackKing()->setX(destinationX);
-											menu->getBlackKing()->setY(destinationY);
-										}
-										
-									}
-								}
-								
-							}
-
-							//for the rest of the pieces
-							else
-							{
-								cur_king = menu->getBlackKing();
-								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
-								if (isLegalMove)
-								{
-									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
-								}
-								
-							}
-						}
-					}
-					else
-					{
-						isLegalMove = false;
-						std::cout << "Error you can't move your opponents pieces!" << std::endl;
-					}
-				}
-				else
-				{
-					std::cout << "Error: you cant move from an empty square" << std::endl;
-					isLegalMove = false;
-				}
-			}
-			else
-			{
-				std::cout << "You are trying to move out of the board. You can't do that!" << std::endl;
-			}
-
-		}
-
-		menu->updateBoard(move);
-		isLegalMove = false;
-		menu->incNumOfMoves();
-
-	}
-}
+//void main1()
+//{
+//	Menu* menu = new Menu();
+//	bool run = true;
+//	King* cur_king;
+//	std::string move;
+//	bool isLegalMove = false;
+//	char turn;
+//	int sourceX, sourceY, destinationX, destinationY;
+//	while (run)
+//	{
+//		printBoard(menu->getBoard());
+//		if (menu->getNumOfMoves() % 2 == 0)
+//		{
+//			std::cout << "Turn white" << std::endl;
+//			turn = 'w';
+//		}
+//		else
+//		{
+//			std::cout << "Turn black" << std::endl;
+//			turn = 'b';
+//		}
+//		while (isLegalMove == false)
+//		{
+//			std::cout << "Enter Your move(example:e2e4):" << std::endl;
+//			std::cin >> move;
+//			isLegalMove = check_move(move);
+//			if (isLegalMove)
+//			{
+//				sourceX = int(move[0]) - 97;
+//				sourceY = 7-(int(move[1]) - 49);
+//				destinationX = int(move[2]) - 97;
+//				destinationY = 7-(int(move[3]) - 49);
+//				if (menu->getBoard()[sourceY][sourceX] != nullptr)
+//				{
+//					if (menu->getBoard()[sourceY][sourceX]->getColor() == turn)
+//					{
+//
+//
+//						if (turn == 'w')//for white
+//						{
+//							//for the king
+//							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
+//							{
+//								cur_king = menu->getWhiteKing();
+//								isLegalMove= cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+//								if (isLegalMove)
+//								{
+//									isLegalMove = !(cur_king->isInCheckFromKing(menu->getBlackKing()->getX(), menu->getBlackKing()->getY(),destinationX,destinationY));
+//									if (isLegalMove)
+//									{
+//										menu->getWhiteKing()->setX(destinationX);
+//										menu->getWhiteKing()->setY(destinationY);
+//									}
+//									
+//								}
+//							}
+//
+//							//for the rest of the pieces
+//							else
+//							{
+//								cur_king = menu->getWhiteKing();
+//								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard())); //!
+//								if (isLegalMove)
+//								{
+//									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+//								}
+//								
+//							}
+//						}
+//
+//
+//						else//for black
+//						{
+//							//for the king
+//							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
+//							{
+//								if (isLegalMove)
+//								{
+//									cur_king = menu->getBlackKing();
+//									isLegalMove = cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+//									if (isLegalMove)
+//									{
+//										isLegalMove = !(cur_king->isInCheckFromKing(menu->getWhiteKing()->getX(), menu->getWhiteKing()->getY(),destinationX,destinationY));
+//										if (isLegalMove)
+//										{
+//											menu->getBlackKing()->setX(destinationX);
+//											menu->getBlackKing()->setY(destinationY);
+//										}
+//										
+//									}
+//								}
+//								
+//							}
+//
+//							//for the rest of the pieces
+//							else
+//							{
+//								cur_king = menu->getBlackKing();
+//								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+//								if (isLegalMove)
+//								{
+//									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+//								}
+//								
+//							}
+//						}
+//					}
+//					else
+//					{
+//						isLegalMove = false;
+//						std::cout << "Error you can't move your opponents pieces!" << std::endl;
+//					}
+//				}
+//				else
+//				{
+//					std::cout << "Error: you cant move from an empty square" << std::endl;
+//					isLegalMove = false;
+//				}
+//			}
+//			else
+//			{
+//				std::cout << "You are trying to move out of the board. You can't do that!" << std::endl;
+//			}
+//
+//		}
+//
+//		menu->updateBoard(move);
+//		isLegalMove = false;
+//		menu->incNumOfMoves();
+//
+//	}
+//}
 
 
 bool check_move(std::string move)
@@ -211,8 +211,18 @@ in order to read and write information from and to the Backend
 
 void main()
 {
-	srand(time_t(NULL));
 
+	Menu* menu = new Menu();
+	bool run = true;
+	King* cur_king;
+	std::string move;
+	bool isLegalMove = false;
+	char turn;
+	int sourceX, sourceY, destinationX, destinationY;
+	std::string board_str;
+	bool firstMove = true;
+	srand(time_t(NULL));
+	char result[2];
 	
 	Pipe p;
 	bool isConnect = p.connect();
@@ -252,23 +262,198 @@ void main()
 	{
 		// should handle the string the sent from graphics
 		// according the protocol. Ex: e2e4           (move e2 to e4)
+
+		/******* JUST FOR EREZ DEBUGGING ******/
+		//int r = rand() % 10; // just for debugging......
+		//msgToGraphics[0] = (char)(1 + '0');
+		//msgToGraphics[1] = 0;
+		/******* JUST FOR EREZ DEBUGGING ******/
 		
-		// YOUR CODE
-		strcpy_s(msgToGraphics, "YOUR CODE"); // msgToGraphics should contain the result of the operation
+		result[0] = 1 + '0';
+		result[1] = '\0';
+		
+		if (menu->getNumOfMoves() % 2 == 0)
+		{
+			std::cout << "Turn white" << std::endl;
+			turn = 'w';
+		}
+		else
+		{
+			std::cout << "Turn black" << std::endl;
+			turn = 'b';
+		}
+		while (isLegalMove == false)
+		{
+			if (firstMove == false)
+			{
+				strcpy_s(msgToGraphics, result);
+				p.sendMessageToGraphics(msgToGraphics);
 
-		/******* JUST FOR EREZ DEBUGGING ******/
-		int r = rand() % 10; // just for debugging......
-		msgToGraphics[0] = (char)(1 + '0');
-		msgToGraphics[1] = 0;
-		/******* JUST FOR EREZ DEBUGGING ******/
+				// get message from graphics
+				msgFromGraphics = p.getMessageFromGraphics();
+			}
+			firstMove = false;
+			move=msgFromGraphics;
+			isLegalMove = check_move(move);
+			if (isLegalMove)
+			{
+				sourceX = int(move[0]) - 97;
+				sourceY = 7 - (int(move[1]) - 49);
+				destinationX = int(move[2]) - 97;
+				destinationY = 7 - (int(move[3]) - 49);
+				if (menu->getBoard()[sourceY][sourceX] != nullptr)
+				{
+					if (menu->getBoard()[sourceY][sourceX]->getColor() == turn)
+					{
 
+
+						if (turn == 'w')//for white
+						{
+							//for the king
+							if (menu->getBoard()[sourceY][sourceX]->getType() == 'K')
+							{
+								cur_king = menu->getWhiteKing();
+								isLegalMove = cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+								if (isLegalMove)
+								{
+									isLegalMove = !(cur_king->isInCheckFromKing(menu->getBlackKing()->getX(), menu->getBlackKing()->getY(), destinationX, destinationY));
+									if (isLegalMove)
+									{
+										menu->getWhiteKing()->setX(destinationX);
+										menu->getWhiteKing()->setY(destinationY);
+										result[0] = 0 + '0';
+									}
+									else
+									{
+										result[0] = 6 + '0';
+									}
+
+								}
+								else
+								{
+									result[0] = 6 + '0';
+								}
+							}
+
+							//for the rest of the pieces
+							else
+							{
+								cur_king = menu->getWhiteKing();
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard())); //!
+								if (isLegalMove)
+								{
+									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+									if (isLegalMove)
+									{
+										result[0] = 0 + '0';
+									}
+									else
+									{
+										result[0] = 6 + '0';
+									}
+								}
+								else
+								{
+									result[0] = 6 + '0';
+								}
+
+							}
+						}
+
+
+						else//for black
+						{
+							//for the king
+							if (menu->getBoard()[sourceY][sourceX]->getType() == 'k')
+							{
+								if (isLegalMove)
+								{
+									cur_king = menu->getBlackKing();
+									isLegalMove = cur_king->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+									if (isLegalMove)
+									{
+										isLegalMove = !(cur_king->isInCheckFromKing(menu->getWhiteKing()->getX(), menu->getWhiteKing()->getY(), destinationX, destinationY));
+										if (isLegalMove)
+										{
+											menu->getBlackKing()->setX(destinationX);
+											menu->getBlackKing()->setY(destinationY);
+											result[0] = 0 + '0';
+										}
+										else
+										{
+											result[0] = 6 + '0';
+										}
+
+									}
+									else
+									{
+										result[0] = 6 + '0';
+									}
+								}
+								else
+								{
+									result[0] = 6 + '0';
+								}
+
+							}
+
+							//for the rest of the pieces
+							else
+							{
+								cur_king = menu->getBlackKing();
+								isLegalMove = !(cur_king->isInDangerAfterMove(sourceX, sourceY, destinationX, destinationY, cur_king->getX(), cur_king->getY(), menu->getBoard()));
+								if (isLegalMove)
+								{
+									isLegalMove = menu->getBoard()[sourceY][sourceX]->isMovePossible(sourceX, sourceY, destinationX, destinationY, menu->getBoard());
+									if (isLegalMove)
+									{
+										result[0] = 0 + '0';
+									}
+									else
+									{
+										result[0] = 6 + '0';
+									}
+								}
+								else
+								{
+									result[0] = 6 + '0';
+								}
+
+							}
+						}
+					}
+					else
+					{
+						isLegalMove = false;
+						std::cout << "Error you can't move your opponents pieces!" << std::endl;
+						result[0] = 6 + '0';
+					}
+				}
+				else
+				{
+					std::cout << "Error: you cant move from an empty square" << std::endl;
+					isLegalMove = false;
+					result[0] = 6 + '0';
+				}
+			}
+			else
+			{
+				std::cout << "You are trying to move out of the board. You can't do that!" << std::endl;
+				result[0] = 6 + '0';
+			}
+
+		}
+
+		menu->updateBoard(move);
+		isLegalMove = false;
+		menu->incNumOfMoves();
+
+		
 
 		// return result to graphics		
-		p.sendMessageToGraphics(msgToGraphics);   
-
-		// get message from graphics
-		msgFromGraphics = p.getMessageFromGraphics();
+		
 		std::cout << msgFromGraphics << std::endl;
+		
 	}
 
 	p.close();
