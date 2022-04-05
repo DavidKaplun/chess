@@ -1,0 +1,51 @@
+{\rtf1\ansi\deff0\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\fswiss\fprq2\fcharset0 Liberation Sans{\*\falt Arial};}{\f4\fnil\fprq0\fcharset0 Whitney{\*\falt Helvetica Neue};}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Arial;}{\f7\fswiss\fprq0\fcharset128 Arial;}}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red220\green221\blue222;\red201\green33\blue30;}
+{\stylesheet{\s0\snext0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033 Normal;}
+{\s15\sbasedon0\snext16\sb240\sa120\keepn\dbch\af5\dbch\af6\afs28\loch\f3\fs28 Heading;}
+{\s16\sbasedon0\snext16\sl276\slmult1\sb0\sa140 Text Body;}
+{\s17\sbasedon16\snext17\sl276\slmult1\sb0\sa140\dbch\af7 List;}
+{\s18\sbasedon0\snext18\sb120\sa120\noline\i\dbch\af7\afs24\ai\fs24 Caption;}
+{\s19\sbasedon0\snext19\noline\dbch\af7 Index;}
+}{\*\generator Neat_Office/6.2.8.2$Windows_x86 LibreOffice_project/}{\info{\creatim\yr0\mo0\dy0\hr0\min0}{\revtim\yr2022\mo4\dy5\hr19\min39}{\printim\yr0\mo0\dy0\hr0\min0}}{\*\userprops}\deftab709
+\viewscale100
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse451\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\pgdscnxt0 Default Style;}}
+\formshade\paperh15840\paperw12240\margl1134\margr1134\margt1134\margb1134\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+{\*\ftnsep\chftnsep}\pgndec\pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\qc{\ul\ulc0\b\afs28\ab\rtlch \ltrch\loch\fs28
+High Level Design}
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\afs28\rtlch \ltrch\loch\fs28
+whenever the chess code starts running, the GUI, front-end and the back-end connects to each other throughout a pipe in order to transfer relevant data from the back-end (the code itself) to the front-end (GUI). }
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+After the pipe is created the first data to travel between the front-end and the back-end is the chess board format.  }
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\cf1\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+Afterwards a loop starts that runs until the front-end (GUI) sends to the back-end the message \u8220\'93quit\u8221\'94 that signs to the back-end to end the game.}
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\cf1\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+Every turn the user is being asked to make a move from the peace placement to another. That data is sent to the code(back-end) for analyzing and a process of checks to determine if the move is valid according to chess rules.}
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\cf1\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+then }{\cf1\afs28\rtlch \ltrch\loch\fs28
+the move is}{\cf1\afs28\rtlch \ltrch\loch\fs28
+ made and sent back to the front-end to display it or if the move is not valid it will display on the side of the board }{\cf1\afs28\rtlch \ltrch\loch\fs28
+an}{\cf1\afs28\rtlch \ltrch\loch\fs28
+ error }{\cf1\afs28\rtlch \ltrch\loch\fs28
+and no be made}{\cf1\afs28\rtlch \ltrch\loch\fs28
+. }
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql\cf1\afs28\rtlch \ltrch\loch\fs28
+
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+The \u8220\'93quit\u8221\'94 message is being sent on a couple of occasions. }
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+First, the user close the graphics, in this scenario the \u8220\'93quit\u8221\'94 is being sent to the back-end and both front-end and the back-end stop. }
+\par \pard\plain \s0\nowidctlpar\hyphpar0\cf0\kerning1\dbch\af8\langfe2052\dbch\af6\afs24\alang1081\loch\f0\hich\af0\fs24\lang1033\sl360\slmult1\ql{\cf1\afs28\rtlch \ltrch\loch\fs28
+Second, the back-end checks after every move if the king on both players is under danger and if it is, information with the updated board is being sent to the front-end and displayed. If that checkmate is not avoidable the game ends and the GUI sends the \u8220\'93quit\u8221\'94 message and both back-end and front-end end their run. }
+\par }
