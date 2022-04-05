@@ -16,7 +16,44 @@ bool Knight::isMovePossible(int source_x, int source_y, int destination_x, int d
     int posY[4] = { source_y - 1, source_y + 1, source_y - 2, source_y + 2 };
 
     int x, y;
+    /*
+    arrow code spotted
+    i think i would flattten it by separately checking the destinations and if they make sense go to the 'if's
+    in addition, i would have joined the 2 most outed 'if's together with an 'and' logic gate
+    i would have written the following code:
+    */
 
+    /*
+    bool isPos = false;
+    for (int i = 0; i < 4; i++)
+    {
+        if (destination_x == posX[i])
+        {
+            isPos = true;
+            break;
+        }
+    }
+    //check the 'isPos' and reset it
+    for (int i = 0; i < 4; i++)
+    {
+        if (destination_y == posY[i])
+        {
+            isPos = true;
+            break;
+        }
+    }
+    //check the 'isPos'
+    if (board[destination_y][destination_x] == nullptr || 
+        board[destination_y][destination_x]->getColor() != this->getColor())
+    {
+        return true;
+    }
+    else
+    {
+        std::cout << "trying to eat your friends? not cool bro" << std::endl;
+        return false;
+    }
+    */
     for (x = 0; x < 4; x++)
     {
         if (destination_x == posX[x])
